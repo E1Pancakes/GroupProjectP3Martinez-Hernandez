@@ -22,15 +22,16 @@ public class PlayerMovment : MonoBehaviour
 
 
         if (Input.GetKey(KeyCode.Space) && grounded)
-            body.velocity = new Vector2(body.velocity.x, speed);
+        Jump();
 
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", grounded);
     }
 
-    private void jump()
+    private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, speed);
+        anim.SetTrigger("jump");
         grounded = false;
     }
 

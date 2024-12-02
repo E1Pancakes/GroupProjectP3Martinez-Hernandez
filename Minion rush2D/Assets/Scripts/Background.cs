@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    private Vector3 startPos;
-    private float repeatWidth;
+    private BoxCollider2D groundCollider;
+    private float groundHorizontalLength;
+
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider2D>().size.x / 2;
+        groundCollider = GetComponent<BoxCollider2D>();
+        groundHorizontalLength = groundCollider.size.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < startPos.x - repeatWidth)
+        if (transform.position.x < -groundHorizontalLength)
         {
-            transform.position = startPos;
+            RepositionBackground();
         }
     }
+
+    private void RepositionBackground()
+    {
+        Vector2 groundOffset = new Vector2(groundHorizontalLength * 2f, 0);
+        transform.position = (Vector2)transform.position + groundOffset;
+    }
 }
+
