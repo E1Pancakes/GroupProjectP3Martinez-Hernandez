@@ -10,7 +10,7 @@ public class Background : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>(). size.x / 2;
+        repeatWidth = GetComponent<BoxCollider2D>().size.x / 2;
     }
 
     // Update is called once per frame
